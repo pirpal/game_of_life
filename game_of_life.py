@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
-from patterns import PatternFactory
 
 
 class GameOfLife(tk.Tk):
@@ -16,7 +15,6 @@ class GameOfLife(tk.Tk):
         self.colors = {0: "#1f2433", 1: "#2ab922"}
         self.grid = [[0 for i in range(self.size)] for i in range(self.size)]
         self.generation_nb = tk.IntVar(0)
-        self.pattern_fact = PatternFactory()
         self.initUi()
         self.cells = self.initCells()
         self.animation_on = False
@@ -60,17 +58,6 @@ class GameOfLife(tk.Tk):
 
         self.bt_step = tk.Button(self.cmd_fr, text="Step +1", command=self.step)
         self.bt_step.grid(row=0, column=2)
-
-        # Patterns
-        self.patterns_fr = tk.Frame(self, height=400, padx=10, pady=10)
-        self.patterns_fr.grid(row=0, column=4)
-
-        self.bt_glider_sw = tk.Button(
-            self.patterns_fr, text="+ SW Glider", command=self.addSwGlider)
-        self.bt_glider_sw.grid(row=0, column=0, sticky=tk.N)
-
-    def addSwGlider(self):
-        pass
 
     def initCells(self):
         cells = []
